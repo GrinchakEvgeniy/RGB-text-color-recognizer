@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RGB</title>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="wrap">
+		<h4 class="text">Some text!</h4>
+	</div>
+	
+	<form method="post" action="">
+		<input type="text" name="red" value="{{ color[0] }}">
+		<input type="text" name="green" value="{{ color[1] }}">
+		<input type="text" name="blue" value="{{ color[2] }}">
+
+		<input type="hidden" id="retColor" name="textcolor" value="0">
+		<input type="submit" name="" value="submit">
+	</form>
+	<div style="margin-left: 500px; margin-top: 10px;">
+		<button class="but" id="black" style="width:50px; height: 20px; background-color: black; border: solid 2px green; display: inline-block;"></button>
+		<button class="but" id="white" style="width:50px; height: 20px; background-color: white; border: solid 2px green; display: inline-block;"></button>
+	</div>
+	<style type="text/css">
+		.wrap{
+			background-color: rgb({{ color[0] }} {{ color[1] }} {{ color[2] }});
+			width: 100px;
+			height: 100px;
+			margin: 20px;
+			text-align: center;
+			border: solid 2px black;
+
+		}
+		.text{
+			color: black;
+		}
+	</style>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+
+			$(".but").on('click', function(){
+				var id_ = $(this).attr('id');
+				var color = '';
+				if (id_ == 'black') {
+					$("#retColor").attr('value', '0')
+				}else{
+					$("#retColor").attr('value', '1')
+				}
+				$(".text").css('color', id_);
+			})
+		})
+	</script>
+</body>
+</html>
